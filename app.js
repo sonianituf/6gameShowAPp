@@ -9,7 +9,7 @@ const startBtn = document.querySelector('.btn__reset');/* select the start btn *
 
 /* for checkletter function */
 let li = document.getElementsByClassName('letter'); /* all elements with class letter */
-let match = null;/* declare match and set to null */
+// let match = null;/* declare match and set to null */
     
 let phrases = ['html was easy',  /* 4 create phrases array */
                 'css was a bit tricky',
@@ -18,17 +18,19 @@ let phrases = ['html was easy',  /* 4 create phrases array */
                  'always learn new things' ];
 /* 3 attach event listener to “StartGame” btn to hide start screen overlay.*/
 startBtn.addEventListener('click', function(e)  {
-    
-    /* hide overlay when pressing "Start Game"  */
-    if(startBtn.textContent === 'Start Game') {
-        overlayStart.style.display = 'none';
-    } /* if win, change textCont for btn_reset */
-    else if (overlayStart.className === 'win') {
-            startBtn.textContent = "Hooray! Play again?";
-    } /* if lose, change textCont for btn_reset */
-    else  {
-        startBtn.textContent = "Bummer...Play again?";
-    }
+    startBtn.textContent === 'Start Game';
+    overlayStart.style.display = 'none';
+
+            // /* hide overlay when pressing "Start Game"  */
+            // if(startBtn.textContent === 'Start Game') {
+            //     overlayStart.style.display = 'none';
+            // } /* if win, change textCont for btn_reset */
+            // else if (overlayStart.className === 'win') {
+            //         startBtn.textContent = "Hooray! Play again?";
+            // } /* if lose, change textCont for btn_reset */
+            // else  {
+            //     startBtn.textContent = "Bummer...Play again?";
+            // }
 });
 
 
@@ -61,7 +63,7 @@ addPhraseToDisplay(phrasesArray);
 /* 7 create a checkLetter function. */
 function checkLetter (qwertyButton){
     // let li = document.getElementsByClassName('letter');
-    // let match = null;
+    let match = null;
         for (let i = 0; i < li.length; i += 1) {
             if (li[i].textContent === qwertyButton.textContent) {
                 li[i].classList.add('show');
@@ -77,17 +79,15 @@ function checkLetter (qwertyButton){
 
 qwerty.addEventListener('click', (e) => {
     
-    let qwertyButton = document.querySelector('#qwerty');/* select keyboard button */
-    qwertyButton = e.target;
-    
-       if('click' !== qwertyButton) {
-        document.getElementById('qwerty').disabled = false;
+    let button = e.target;
+    if (button.tagName === "BUTTON") {
+        button.classList.add('chosen');
+        button.disabled = true;
     } else {
-        document.getElementById('qwerty').disabled = true;
-        qwertyButton.classList.add('chosen');
-        }
+        button.disabled = false;
+    }
         /* 9 Count the missed guesses in the game. */
-    let letterFound = checkLetter(qwertyButton);
+    let letterFound = checkLetter(button);
                /* replace hearts if letterFound is null */    
          if (letterFound === null) {
            let imgReplace = document.getElementsByTagName('img');
@@ -96,27 +96,30 @@ qwerty.addEventListener('click', (e) => {
            missed += 1;
         } 
 
+/*  call the checkWin */
+checkWin(); 
+
 /* create the checkWin f */
 function checkWin() {
     let letter = document.getElementsByClassName('letter');
     let show = document.getElementsByClassName('show');
     const title = document.querySelector('.title');
     if (show.length === letter.length) {
-        //headline showing person won
+        //headline for win
         title.innerHTML = 'Fantastic!';
         overlayStart.classList.add('win');
         overlayStart.style.display = "flex";
+        overlayStart.style.background='.win';
         //add reset button
-        startBtn.textContent = "Try again"
+        startBtn.textContent = "Try again";
     } else if (missed == 5) {
-        //headline showing person lost
+        //headline for lose
         title.innerHTML = 'LadyLuck smiles not upon you';
         overlayStart.classList.add('lose');
-        overlayS.style.display = "flex";
+        overlayStart.style.display = "flex";
         //add reset button
         startBtn.textContent = "Try, try, try again?";
     }
 }
-/*  call the checkWin */
-checkWin(); 
+
 });
