@@ -109,7 +109,7 @@ function checkWin() {
         title.innerHTML = 'Fantastic!';
         overlayStart.classList.add('win');
         overlayStart.style.display = "flex";
-        overlayStart.style.background='.win';
+        // overlayStart.style.display = "show";
         //add reset button
         startBtn.textContent = "Try again";
     } else if (missed == 5) {

@@ -164,7 +164,10 @@ button {
 }
 
 .win {
+  background-image:url('../images/quartz-crystal-sphere-8-5cm_13.jpg') ;
+  /* background-size: cover; */
   background-color: var(--color-win);
+  display: none;
 }
 
 .win a {
@@ -172,7 +175,9 @@ button {
 }
 
 .lose {
+  background-image:url('../images/moonInCancer.jpg') ;
   background-color: var(--color-lose);
+  display: none;
 }
 
 .lose a {
