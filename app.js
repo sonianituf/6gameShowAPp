@@ -122,3 +122,17 @@ function checkWin() {
 }
 
 });
+
+/* reset */
+function resetGame () {
+    /* when click on try again, return me to the statrGame display  */
+    startBtn.addEventListener('click', (e) =>{
+        if (startBtn.textContent === "Try again"){
+            overlayStart.style = document.getElementById('overlay');
+        } else if (startBtn.textContent !== "Try again"){
+
+        }
+    });
+    
+
+}
