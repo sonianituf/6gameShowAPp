@@ -70,7 +70,6 @@ function checkLetter (qwertyButton){
                 match = li[i].textContent;
             } else if (li[i].textContent !== qwertyButton.textContent) {
                 li[i].classList.add('null');
-                /* remove hearts when no match  by when click button letter not match? */
             }
         }
     return match;
