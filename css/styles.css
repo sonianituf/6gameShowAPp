@@ -6,7 +6,7 @@
 :root {
   --color-win: #2aa138;
   --color-lose: #fcab15;
-  --color-start: #a605ce;
+  --color-start: #86b9b5;
   --color-neutral: #445069;
   --color-neutral-light: #D2D2D2;
   --color-keys: #037764;
@@ -111,19 +111,28 @@ button {
   border-radius: 5px;
   font-size: var(--font-size-medium);
   color: #FFFFFF;
+        /* keyboard click fade */
+      /* transform:scale(0,0);
+      transition-duration:1s; */
 }
 
 .btn__reset {
   padding: 8px;
+  width:90px;
+  height:90px;
   margin: 50px auto;
   background: #FFFFFF;
-  border-radius: 5px;
   font-size: var(--font-size-medium);
-  font-family: 'Press Start 2P', cursive;
-  transition: background .5s ease-out;
+  font-weight: bold;
+  /* font-family: 'Press Start 2P', cursive;  */
+  border-radius: 50%;
+  border:solid 3px #037764;   
+  transition: all .5s ease-out;
 }
+
 .btn__reset:hover{
   background: #bbf7c2;
+  transform: scale(1.5);
 }
 
 /* Overlay */
@@ -146,8 +155,9 @@ button {
 }
 
 .start {
-  background-color: var(--color-start);
-}
+  /* background-color: var(--color-start); */
+  background-image: url("../images/kids1.jpg");
+ }
 
 .start a {
   color: var(--color-win);
@@ -167,4 +177,8 @@ button {
 
 .lose a {
   color: var(--color-lose);
+}
+img {
+  height: 35px;
+   width: 30px;
 }
