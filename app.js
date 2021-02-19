@@ -16,21 +16,26 @@ let phrases = ['html was easy',  /* 4 create phrases array */
                  'javascript is complex', 
                  'coding is fun logic', 
                  'always learn new things' ];
+
+/* reset */
+function resetGame () {
+    /* when click on try again, return me to the statrGame display  */
+    startBtn.addEventListener('click', (e) =>{
+        if (e.currentTarget.className === "win" && "lose"){
+            return overlayStart;
+            // overlayStart.style = document.getElementById('overlay');
+        } else if (e.textContent !== "Try again"){
+
+        }
+    });
+}
 /* 3 attach event listener to “StartGame” btn to hide start screen overlay.*/
 startBtn.addEventListener('click', function(e)  {
-    startBtn.textContent === 'Start Game';
+    startBtn.textContent ='Start Game';
     overlayStart.style.display = 'none';
+    resetGame();
 
-            // /* hide overlay when pressing "Start Game"  */
-            // if(startBtn.textContent === 'Start Game') {
-            //     overlayStart.style.display = 'none';
-            // } /* if win, change textCont for btn_reset */
-            // else if (overlayStart.className === 'win') {
-            //         startBtn.textContent = "Hooray! Play again?";
-            // } /* if lose, change textCont for btn_reset */
-            // else  {
-            //     startBtn.textContent = "Bummer...Play again?";
-            // }
+          
 });
 
 
@@ -88,7 +93,7 @@ qwerty.addEventListener('click', (e) => {
         /* 9 Count the missed guesses in the game. */
     let letterFound = checkLetter(button);
                /* replace hearts if letterFound is null */    
-         if (letterFound === null) {
+         if (letterFound === null && button.tagName === "BUTTON") {
            let imgReplace = document.getElementsByTagName('img');
            /* do i need a for each loop? */
             imgReplace[missed].src = "images/lostHeart.png";
@@ -123,16 +128,3 @@ function checkWin() {
 
 });
 
-/* reset */
-function resetGame () {
-    /* when click on try again, return me to the statrGame display  */
-    startBtn.addEventListener('click', (e) =>{
-        if (startBtn.textContent === "Try again"){
-            overlayStart.style = document.getElementById('overlay');
-        } else if (startBtn.textContent !== "Try again"){
-
-        }
-    });
-    
-
-}
