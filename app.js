@@ -23,15 +23,17 @@ btn__reset.addEventListener('click', (e) => {
         imgReplace.src = 'images/liveHeart.png';
     });
     /* reset phrase  */
-    const ul = document.querySelector('ul');
+        // select where the new phrase will be displayed  - in the first ul
+    const ul = document.querySelector('ul'); 
+    // set the inerHTML of ul to be empty, in order to add the new array when calling the functions 
     ul.innerHTML = '';
     /* enable the keyboard buttons, in order to reset the game, for each button in the keyboard, 
     remove the dissabled  and chosen attributes added in step 8 */
     const qwertyButtons = qwerty.querySelectorAll('button');
+    // next code is to remove attributes added on elements on previous try
     qwertyButtons.forEach(button => {
         button.removeAttribute('disabled');
         button.classList.remove('chosen');
-        button.disabled = false;
     });
     // call the function randomPhraseArray
     const phraseArray = getRandomPhraseAsArray(phrases);
@@ -40,7 +42,6 @@ btn__reset.addEventListener('click', (e) => {
     // hide overlay display
 overlay.style.display = 'none';
 });
-
 
 /* 5 create a getRandomPhraseAsArray function and return the new array in split characters*/
 function getRandomPhraseAsArray(arr) {
@@ -106,7 +107,7 @@ qwerty.addEventListener('click', (e) => {
                 button.disabled = true;
                 // and if letterfound is null, then replace live heart with lost heart
                 if (letterFound === null) {
-                    const imgReplace = document.getElementsByTagName('img');
+                    let imgReplace = document.getElementsByTagName('img');
                     imgReplace[missed].src = 'images/lostHeart.png';
                     //  increase the missed count by 1.
                     missed += 1;
